@@ -8,3 +8,7 @@ spec:
       image: muralisocial123/cart-page-test:1.0
       ports:
         - containerPort: 3000
+    - name: example-container 
+      image:  muralisocial123/deloitte-web-app:1.0
+      ports:
+        - containerPort: 80

@@ -1,0 +1,19 @@
+apiVersion: apps/v1 
+kind: ReplicaSet 
+metadata:
+  name: sample-rs
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: web
+  template: # Pod Defination 
+    metadata:
+      labels:
+        app: web 
+    spec: # Defines the behaviour of the Pod 
+      containers:
+        - name: test-container 
+          image: muralisocial123/test-web-oracle-example:1.0
+          ports:
+            - containerPort: 80

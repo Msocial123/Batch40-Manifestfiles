@@ -7,22 +7,35 @@ metadata:
     nginx.ingress.kubernetes.io/use-regex: "true"
     nginx.ingress.kubernetes.io/rewrite-target: /$3
 spec:
-  ingressClassName: nginx 
+  ingressClassName: nginx
   rules:
     - http:
-      paths: 
-        - path: /cart(/|$)(.*)
-          pathType: prefix 
-          backend:
-            service:
-              name: cart-svc
-              port:
-                number: 3001
-        - path: /organic(/|$)(.*)
-          pathType: prefix 
-          backend:
-            service:
-              name: organic-svc
-              port:
-                number: 5657        
-
+        paths:
+          - path: /cart(/|$)(.*)
+            pathType: ImplementationSpecific
+            backend:
+              service:
+                name: cart-svc
+                port:
+                  number: 3001
+          - path: /organic(/|$)(.*)
+            pathType: ImplementationSpecific
+            backend:
+              service:
+                name: organic-svc
+                port:
+                  number: 5657
+          - path: /test(/|$)(.*)
+            pathType: ImplementationSpecific
+            backend:
+              service:
+                name: test-web-svc
+                port:
+                  number: 81
+          - path: /(.*)
+            pathType: ImplementationSpecific
+            backend:
+              service:
+                name: organic-svc
+                port:
+                  number: 5657
